@@ -7,6 +7,7 @@ to the built-in time() function. It uses simple rules to define the start and
 end of DST. Rules work for most contries that observe DST.
 - see https://en.wikipedia.org/wiki/Daylight_saving_time_by_country for details and exceptions
 - see http://www.timeanddate.com/time/zones/ for standard abbreviations and additional information
+
 Caution: DST rules may change in the future if you hardcode the rules.
 
 Portions of code adapted from:
@@ -48,7 +49,7 @@ In your code replace your call to time() with the simpleDSTadjust class version 
 Minimal version:
 
 ```cpp
-time_t t = dstAdjusted.time(null);
+time_t t = dstAdjusted.time(NULL);
 ```
 
 Version to get the DST adjusted timezone abbreviation
@@ -78,3 +79,12 @@ However the simpleDSTadjust class version of time() has a char pointer argument 
 for obtaining the timezone abbreviation string. If the argument passed is NULL, there is no difference in functionality other
 than the DST adjustment.
  
+# Example
+
+## ntpTimedemo_DST
+
+An example is included that shows how to use the built-in LWIP sntp client to get the time from an NTP server and adjust for
+daylight saving time. This example shows how to write out the time in a 12 hour format, which could be easily adapted for a 24
+hour format. It includes rules for US/Eastern (New York) and Australia/Eastern (Sydney) timezones which can be changes to other
+other country/city timezones. It also shows how to implement a timer to update the NTP time with an interval greater than 2
+hours.
