@@ -1,6 +1,6 @@
 ﻿# simpleDSTadjust
 
-ESP8266 Daylight Saving Time (DST) adjust library.
+ESP8266 Automatic Daylight Saving Time (DST) adjust library.
 
 This library implements missing DST functionality by implementing a wrapper API 
 to the built-in time() function. It uses simple rules to define the start and 
@@ -18,10 +18,26 @@ Portions of code adapted from:
 
 ## Installing
 
-You can install by downloading the contents of the library as a .zip file and using the Arduino
+You can install by using the Arduino Library manager and searching for simpleDSTadjust or by downloading the contents of the library as a .zip file and using the Arduino
 Library Manager to add the .zip file.
 
-## Usage
+# Examples
+
+## ntpTimedemo_DST
+
+An example is included with the library that shows how to use the built-in LWIP sntp client to get the time from an NTP server and adjust for
+daylight saving time. This example shows how to write out the time in a 12 hour format, which could be easily adapted for a 24
+hour format. It includes rules for US/Eastern (New York) and Australia/Eastern (Sydney) timezones which can be changes to other
+other country/city timezones. It also shows how to implement a timer to update the NTP time with an interval greater than 2
+hours.
+
+## Squix78 Weather Station Example
+
+See the [WeatherStationDemoExtendedDST](https://github.com/squix78/esp8266-weather-station/tree/master/examples/WeatherStationDemoExtendedDST) example 
+for a full implementation including selectable locales, 12/24 hour clock formats and more.
+
+
+## Library Usage
 
 Include the library in your sketch
 
@@ -78,13 +94,4 @@ time_t time(char **abbrev)
 However the simpleDSTadjust class version of time() has a char pointer argument instead of a time_t pointer. This is intended
 for obtaining the timezone abbreviation string. If the argument passed is NULL, there is no difference in functionality other
 than the DST adjustment.
- 
-# Example
 
-## ntpTimedemo_DST
-
-An example is included that shows how to use the built-in LWIP sntp client to get the time from an NTP server and adjust for
-daylight saving time. This example shows how to write out the time in a 12 hour format, which could be easily adapted for a 24
-hour format. It includes rules for US/Eastern (New York) and Australia/Eastern (Sydney) timezones which can be changes to other
-other country/city timezones. It also shows how to implement a timer to update the NTP time with an interval greater than 2
-hours.
