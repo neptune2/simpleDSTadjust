@@ -38,7 +38,7 @@ class simpleDSTadjust {
 
   public:
 	simpleDSTadjust(struct dstRule startRule, struct dstRule endRule );
-	time_t time(char **abbrev);
+	time_t time(char **abbrev, time_t rawTime=0);
 
   private:
 	uint8_t calcYear(time_t time);
