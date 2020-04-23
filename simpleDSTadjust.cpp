@@ -17,9 +17,12 @@ simpleDSTadjust::simpleDSTadjust(struct dstRule startRule, struct dstRule endRul
 }
 
 // Public
-time_t simpleDSTadjust::time(char **abbrev)
+time_t simpleDSTadjust::time(char **abbrev, time_t now)
 {
- time_t now = ::time(NULL);  // Call the original time() function
+ if(now == 0)
+ {
+  now = ::time(NULL);  // Call the original time() function
+ }
  uint8_t year = calcYear(now);
  static time_t dstStart;  // Start of DST in specific Year (seconds since 1970)
  static time_t dstEnd;    // End of DST in listed Year (seconds since 1970)
