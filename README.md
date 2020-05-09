@@ -1,4 +1,7 @@
-﻿# simpleDSTadjust
+### OBSOLETE:
+See https://github.com/esp8266/Arduino/blob/master/libraries/esp8266/examples/NTP-TZ-DST/
+
+# simpleDSTadjust
 
 ESP8266 Automatic Daylight Saving Time (DST) adjust library.
 
